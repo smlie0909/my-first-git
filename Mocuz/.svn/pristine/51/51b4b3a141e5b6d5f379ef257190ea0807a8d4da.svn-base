@@ -1,0 +1,4 @@
+/* pages/register/register.wxss */
+.container{
+    padding-top:26rpx;
+}

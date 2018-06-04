@@ -1,0 +1,87 @@
+//获取应用实例 
+const sectionListUrl = require('../../config').sectionList;
+const sectionIconUrl = require('../../config').sectionIcon;
+const app = getApp()
+Page({
+    data: {
+        currentTab: 0,
+        IconData:{},    //版块数据
+        List: [],       //放置返回数据的数组 
+        pageIndex: 1,    //页码
+        pagesize: 20,      //返回数据的个数  
+        hasMore: true,  //"上拉加载"的变量，默认true，显示; “没有数据”的变量，false，隐藏
+        navbar: ['最新发帖', '本地爆料', '最新回复'],
+    },
+    onLoad: function () {
+        wx.showToast({
+            title: '数据加载中',
+            icon: 'loading',
+            duration: 1000,
+            mask: true
+        });
+        this.requestsectionIconDate();
+        this.requestsectionListDate();
+    },
+    //事件处理函数
+    jumpDetails: function (event) {
+        // console.log(event.currentTarget.id)
+        let itemId = event.currentTarget.id
+        wx.navigateTo({
+            url: '/pages/details/details?cid=' + itemId
+        })
+    },
+    //tab切换响应点击导航栏
+    navbarTap: function (e) {
+        this.setData({
+            currentTab: e.currentTarget.dataset.idx
+        })
+    },
+    //加载更多
+    lower: function () {
+        this.setData({
+            pageIndex: this.data.pageIndex + 1, //每次下拉到底部触发 pageIndex+1
+        })
+        this.requestsectionListDate();
+    },
+    //版块列表加载
+    requestsectionIconDate: function () {
+        let that = this;
+        wx.request({
+            url: sectionIconUrl,
+            header: {
+                'content-type': 'application/json'
+            },
+            success: function (res) {
+                // console.log(res.data.catlist)
+                that.setData({
+                    IconData: res.data.catlist,
+                })
+            }
+
+        })
+    },
+    //话题列表加载
+    requestsectionListDate: function () {
+        let that = this;
+        // console.log(that.data.pageIndex)        
+        if (that.data.pageIndex < 4){ //当pageIndex小于4时加载数据 
+            wx.request({
+                url: sectionListUrl + "&page=" + that.data.pageIndex,
+                // pagesize: 10,
+                header: {
+                    'content-type': 'application/json'
+                },
+                success: function (res) {
+                    // console.log(res.data.list)
+                    that.setData({
+                        List: that.data.List.concat(res.data.list)
+                    });
+                }
+            })
+        }else{
+            that.setData({
+                hasMore: false, //无数据时提示没有更多数据
+            });
+        } 
+    }
+}) 

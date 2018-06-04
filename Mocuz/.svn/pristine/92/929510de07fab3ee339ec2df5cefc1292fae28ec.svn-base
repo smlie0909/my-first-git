@@ -1,0 +1,70 @@
+<view class="container">
+    <view class="content">
+        <view class="user">
+            <image src="/images/touxiang.jpg"></image>
+            <view class="information">
+                <text class="name">大债主<text class="vip-static">V2</text></text>
+                <text class="time">昨天 09:42</text>
+            </view>
+        </view>
+        <text class="title">盱眙县市场监管局：将街区开进商场</text>
+        <text class="source">来自<text>聚焦盱眙</text></text>
+        <text class="words">盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场盱眙县市场监管局：将街区开进商场</text>
+        <image class="img" mode="widthFix" src="/images/kaola1.jpg"></image>
+        <view class="list">
+            <view class="list-info">
+            
+            </view>
+        </view>
+
+    </view>
+    <view class="comment-num">
+        <text>评论 0</text>
+        <text>点赞 0</text>
+        <text>阅读 17</text>
+    </view>
+    <view class="thumbs-up">
+        <view class="img-box">
+            <image src='/images/touxiang.jpg'></image>
+            <image src='/images/touxiang.jpg'></image>
+            <image src='/images/touxiang.jpg'></image>
+            <image src='/images/touxiang.jpg'></image>
+            <image src='/images/touxiang.jpg'></image>
+            <image src='/images/touxiang.jpg'></image>
+            <image src='/images/touxiang.jpg'></image>
+            <image src='/images/touxiang.jpg'></image>
+        </view>
+        <text>52人喜欢</text>
+    </view>
+    <view class="user-publish">
+        <view class="number">1楼</view>
+        <view class="zan">
+            <image class="icon-zan" src="/images/icon-zan-bottom-normal.png"></image>
+            <text>0</text>
+        </view>
+        <image class="touxiang" src='/images/touxiang.jpg'></image>
+        <view class="information">
+            <text class="name">大债主<text class="vip-static">V2</text></text>
+            <text class="time">前天 16:47</text>
+        </view>
+        <text class="speak">空空如也空空如也空空如也空空如也空空如也空空如也</text>
+    </view>
+    <view class="user-publish">
+        <view class="number">2楼</view>
+        <view class="zan">
+            <image class="icon-zan" src="/images/icon-zan-bottom-normal.png"></image>
+            <text>0</text>
+        </view>
+        <image class="touxiang" src='/images/touxiang.jpg'></image>
+        <view class="information">
+            <text class="name">大债主<text class="vip-static">V2</text></text>
+            <text class="time">前天 16:47</text>
+        </view>
+        <text class="speak">空空如也空空如也空空如也空空如也空空如也空空如也</text>
+    </view>
+    <view class="fixed">
+        <image class="huifu" src="/images/icon-comment.png"></image>
+        <input class="comment-input" adjust-position="true" confirm-type="send" bindconfirm="bindInputSend" placeholder="说点什么吧" />
+        <image class="zan-img" src="/images/icon-zan-bottom-normal.png"></image>
+    </view>
+</view>

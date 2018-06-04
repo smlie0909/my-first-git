@@ -1,0 +1,88 @@
+@import "../template/template.wxss"; 
+.section{
+    position:relative;
+    padding:40rpx 0;
+    padding-left:45rpx;
+    padding-right:100rpx;
+    white-space:nowrap;
+    overflow-y:hidden;
+    border-top:1rpx solid rgb(230, 230, 230);
+    border-bottom:1rpx solid rgb(230, 230, 230);
+}
+.section-list{
+    width:80rpx;
+    height:100rpx;
+    margin-right:70rpx;
+    border-radius: 40rpx;
+    display:inline-block;
+
+}
+.section-box{
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.section-box swiper-item{
+    height:100vh;
+}
+.section-list text{
+    font-size:24rpx;
+    display:block;
+    line-height:24rpx;
+    margin-left:-5rpx;
+    margin-top:10rpx;
+    white-space: nowrap;
+    width:100rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align:center;
+
+}
+.section-list image{
+    width:80rpx;
+    height:100rpx;
+}
+.sectionAll{
+    height:222rpx;
+    width:140rpx;
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:10;
+    background:#fff;
+    opacity: .95;
+    border:1rpx solid rgb(230, 230, 230);
+    border-right:none;
+    border-bottom:none;
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+}
+.sectionAll text{
+    width:24rpx;
+    font-size:24rpx;
+    font-weight:bold;
+    display:block;
+    color:#666666;
+    margin-top:40rpx;
+    line-height:1.1;
+}
+.sectionAll image{
+    width:24rpx;
+    height:24rpx;
+    margin-top:10rpx;
+}
+/* tab */
+.swiper-tab{
+    display:flex;
+    padding: 0 40rpx;
+    justify-content: space-between;
+}
+.swiper-tab view{
+    width:170rpx;
+    line-height:30rpx;
+    font-size:30rpx;
+    text-align:center;
+    padding:35rpx 0;
+}

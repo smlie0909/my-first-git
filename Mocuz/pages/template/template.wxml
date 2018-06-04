@@ -1,0 +1,65 @@
+<!--pages/template/template.wxml-->
+<!-- 社区tab -->
+<template name="newsListReply">
+    <view class="post" wx:if="{{items.pics.length==1 || items.pics.length==2}}" bindtap="jumpDetails" data-tid="{{items.tid}}" data-uid="{{items.uid}}" data-id="{{items.id}}" data-details='community' data-gender="{{items.usergroup.gender}}">
+        <view class="topic-title">
+            <image class="touxiang" src="{{items.avatar}}"></image>
+            <view class="name">
+                <block wx:if="{{items.usergroup.gender!=null}}">
+                    <text class="name" wx:if="{{!items.usergroup.level==0}}">{{items.author}}<text class="{{items.usergroup.gender==1?'boy':(items.usergroup.gender==2?'girl':'vip-static')}}">V{{items.usergroup.level}}</text></text>
+                    <text class="name" wx:else>{{items.author}}<text class="{{items.usergroup.gender==1?'boy':(items.usergroup.gender==2?'girl':'vip-static')}}">V1</text></text>
+                </block>
+                <block wx:else>
+                    <text class="name">{{items.author}}</text>
+                </block>
+                <text class="time"></text>
+            </view>
+        </view>
+        <view class="transverse">
+            <view class="photo">
+                <image wx:for="{{items.pics}}" wx:for-item="item" wx:key="itemLsit" wx:for-index="imgIndex" wx:if="{{imgIndex==0}}" src="{{item}}" mode='aspectFill'></image>
+            </view>
+            <view class="especially">
+                <text class="title">{{items.subject || items.message}}</text>              
+                <view class="browse">
+                    <text wx:if="{{items.views!=null}}">阅读 {{items.views}}</text>
+                    <text>评论 {{items.responsecount || items.replies}}</text>
+                    <text class="time">{{items.time || items.showtime}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="post" wx:else="{{items.pics.length>1}}" bindtap="jumpDetails" data-tid="{{items.tid}}" data-id="{{items.id}}" data-uid="{{items.uid}}" data-details='community' data-gender="{{items.usergroup.gender}}"> 
+        <view class="topic-title">
+            <image class="touxiang" src="{{items.avatar}}"></image>
+            <block wx:if="{{items.usergroup.gender!=null}}">
+                <text class="name" wx:if="{{!items.usergroup.level==0}}">{{items.author}}<text class="{{items.usergroup.gender==1?'boy':(items.usergroup.gender==2?'girl':'vip-static')}}">V{{items.usergroup.level}}</text></text>
+                <text class="name" wx:else>{{items.author}}<text class="{{items.usergroup.gender==1?'boy':(items.usergroup.gender==2?'girl':'vip-static')}}">V1</text></text>
+            </block>
+            <block wx:else>
+                <text class="name">{{items.author}}</text>
+            </block>
+        </view>
+        <text class="title">{{items.subject|| items.message}}</text>
+        <view class="photo">
+            <image wx:for="{{items.pics}}" wx:for-item="items" wx:key="itemLsit" src="{{items}}" mode='aspectFill'></image>
+        </view>
+        <view class="browse">
+            <text wx:if="{{items.views!=null}}">阅读 {{items.views}}</text>
+            <text>评论 {{items.replies}}</text>
+            <text class="time">{{items.time || items.showtime}}</text>
+        </view>
+    </view>
+</template>
+
+<!-- 引入阿里tosat_icon -->
+<template name="toast">
+    <view class='toast-out' wx:if='{{isShow}}'>
+        <view class='toast-in'>
+            <span  class='iconfont {{iconClass}}'></span>      
+            <view class='toast-txt'>{{txt}}</view>
+         </view>
+    </view>
+</template>
+
+

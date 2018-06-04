@@ -1,0 +1,22 @@
+<!--pages/register/register.wxml-->
+<view class="container">
+     <view class="verification">
+        <image src="../../images/icon-yonghuming.png"></image>
+        <input class="name" type="text" placeholder='请输入昵称' placeholder-style='color:#cccccc;'></input>
+    </view> 
+    <view class="verification">
+        <image src="../../images/icon-shouji.png"></image>
+        <input class="phone" type="number" maxlength='11' placeholder='请输入手机号' placeholder-style='color:#cccccc;' bindblur="phoneNumber" bindinput="phoneNumber" ></input>
+    </view>
+    <view class="verification">
+        <input class="verification-code" type="number" maxlength='6' placeholder='请输入验证码' placeholder-style='color:#cccccc;' bindinput="verCode" bindblur="verCode"></input>
+        <button class="{{buttonState==0?'codeButtonDisable':'codeButtonAble'}}"   catchtap='getCode'>{{getCodeButtonTitle}} </button>
+    </view>
+    <view class="verification">
+        <image src="../../images/icon-mima.png"></image>
+        <input class="password" type="password" maxlength='16' placeholder='请输入密码' placeholder-style='color:#cccccc;' bindblur="phoneNumber" bindinput="phoneNumber" ></input>
+    </view>
+    <button class='commitbutton' bindtap='registerNewUser'  style='background-color:#1ec3c5;' type='primary'>提交</button>
+</view>
+
+

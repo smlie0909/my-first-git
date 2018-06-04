@@ -1,0 +1,55 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/community/community",
+    "pages/user/user",
+    "pages/local/local",
+    "pages/details/details",
+    "pages/whole/whole",
+    "pages/template/template",
+    "pages/myPost/myPost",
+    "pages/post/post",
+    "pages/register/register",
+    "pages/login/login"
+  ],
+  "window":{
+    "backgroundColor": "#97cbff",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#97cbff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle":"#fff"
+  },
+  "tabBar": {
+    "color": "#444",
+    "selectedColor": "#444",
+    "borderStyle": "#ddd",
+    "backgroundColor": "#f9f9f9",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabBer/home.png",
+        "selectedIconPath": "images/tabBer/home_HL.png"
+      },
+      {
+        "text": "社区",
+        "pagePath": "pages/community/community",
+        "iconPath": "images/tabBer/community.png",
+        "selectedIconPath": "images/tabBer/community_HL.png"
+      },
+      {
+        "text": "本地圈",
+        "pagePath": "pages/local/local",
+        "iconPath": "images/tabBer/local.png",
+        "selectedIconPath": "images/tabBer/local_HL.png"
+      },
+        {
+        "text": "个人",
+        "pagePath": "pages/user/user",
+        "iconPath": "images/tabBer/user.png",
+        "selectedIconPath": "images/tabBer/user_HL.png"
+        }
+    ]
+  }
+}

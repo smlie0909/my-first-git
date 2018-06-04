@@ -1,0 +1,167 @@
+.container{
+    padding-bottom:100rpx;
+}
+.content{
+    padding:40rpx;
+    border-bottom:1rpx solid rgb(235, 235, 235);
+}
+.user{
+    display:flex;
+    align-items: center;
+}
+.user image{
+    width:60rpx;
+    height:60rpx;
+    border-radius:30rpx; 
+}
+.information{
+    display:flex;
+    flex-direction: column;
+    margin-left:30rpx;
+}
+.name{
+    font-size:32rpx;
+    line-height:32rpx;
+    margin-bottom:10rpx;
+}
+.time{
+    font-size:24rpx;
+    color:#999999;
+    line-height:24rpx;
+}
+.title{
+    font-size:44rpx;
+    font-weight: bold ;
+    margin-top:40rpx;
+    display:block;
+
+}
+.source{
+    font-size:24rpx;
+    color:#999999;
+    display: block;
+    margin-top:20rpx;
+    line-height:24rpx;
+}
+.source text{
+    padding-left:10rpx;
+    color:#53a7f0;
+}
+.words{
+    font-size:30rpx;
+    padding-top:30rpx;
+    display: block;
+}
+.img{
+    display:block;
+    width:100%;
+    margin:30rpx 0; 
+    border-radius: 8rpx;
+}
+.comment-num{
+    display:flex;
+    align-items: center;
+    padding:35rpx 40rpx;
+    
+}
+.comment-num text{
+    font-size:30rpx;
+    margin-right:30rpx;
+    line-height:30rpx;
+}
+.thumbs-up{
+    padding:35rpx 40rpx;
+    overflow:hidden;
+    display: flex;
+    justify-content: space-between;
+    border-top:1rpx solid rgb(235, 235, 235);
+}
+.thumbs-up text{
+    font-size:24rpx;
+    color:#999999;
+    float:right;
+    line-height:50rpx;
+}
+.img-box{
+    width:480rpx;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    height:50rpx;
+}
+.img-box image{
+    display: inline-block;
+    width:50rpx;
+    height:50rpx;
+    border-radius: 25rpx;
+    margin-right:20rpx;
+}
+
+.user-publish{
+    padding:60rpx 40rpx 40rpx 120rpx; 
+    position:relative;
+    border-top:1rpx solid rgb(235,235,235);
+}
+.number{
+    position:absolute;
+    left:0;
+    top:0;
+    width:77rpx;
+    height:40rpx;
+    border-radius: 0 0 20rpx 0;
+    background:#f2f2f2;
+    color:#999999;
+    font-size:24rpx;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.zan{
+    position:absolute;
+    right:40rpx;
+    top:60rpx; 
+    line-height:32rpx;
+    display:flex;
+    align-items: center;
+}
+.icon-zan{
+    width:34rpx;
+    height:32rpx;
+}
+.zan text{
+    font-size:24rpx;
+    color:#cccccc;
+    width:50rpx;
+    text-align:right;
+}
+.touxiang{
+    position:absolute;
+    left:40rpx;
+    top:64rpx;
+    width:60rpx;
+    height:60rpx;
+    border-radius: 30rpx;
+}
+.user-publish .name{
+    font-size:32rpx;
+}
+.user-publish .information{
+    display:flex;
+    flex-direction: column;
+    margin-left:0;
+    margin-bottom:40rpx;
+}
+.speak{
+    font-size:32rpx;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+

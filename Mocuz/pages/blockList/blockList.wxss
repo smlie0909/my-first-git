@@ -1,0 +1,46 @@
+@import "../template/template.wxss";
+.container{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:99;
+    width:100%;
+}
+.swiper-tab{
+    width:100%;
+    /* height:100rpx; */
+    white-space:nowrap;
+    border-bottom:1rpx solid #dddddd;
+    font-size:30rpx;
+    box-sizing: border-box;
+    background-color:#fff;
+    display: flex;
+    flex-direction: row;
+}
+.swiper-tab-item{
+    padding:35rpx 0 27rpx 0;
+    margin-left:42rpx;
+    height:30rpx;
+    line-height:30rpx;
+    display:inline-block;
+}
+.active{
+    border-bottom:8rpx solid #1ec3c5;
+    color:#1ec3c5;
+}
+.default{
+    border:0;
+    color:#999999;
+}
+.swiper-tab-item:last-child{
+    margin-right:42rpx;
+}
+.swiper-box {
+    height:100vh;
+}
+.swiper-box scroll-view{
+     height: 100vh;
+}
+.loading {
+    padding-bottom:120rpx;
+}

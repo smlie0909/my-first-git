@@ -1,0 +1,51 @@
+<view class="container">
+    <view class="content">
+        <view class="user">
+            <image src='{{domain}}/uc_server/avatar.php?uid={{detailsList.uid}}&size=small'></image>
+            <view class="information">
+                <text class="name">{{detailsList.username}}<text class="vip-static"></text></text>
+                <!-- {{detailsList.usergroup_level}} -->
+                <text class="time">{{detailsList.ctime_format}}</text>
+            </view>
+        </view>
+        <text class="title">{{detailsList.content_title}}</text>
+        <text class="source">来自<text>{{detailsList.appname}}</text></text>
+        <text class="words">{{detailsList.content}}</text>
+        <image class="img" mode="widthFix" wx:for="{{detailsList.img_arr}}" wx:key="post-info" wx:for-item="itemsImg" src="{{itemsImg.path}}"></image>
+        <view class="list">
+            <view class="list-info">
+            
+            </view>
+        </view>
+
+    </view>
+    <view class="comment-num">
+        <text>评论 {{detailsList.responsecount}}</text>
+        <text>点赞 {{detailsList.likecount}}</text>
+        <text>阅读 {{detailsList.readcount}}</text>
+    </view>
+    <view class="thumbs-up">
+        <view class="img-box">
+            <image wx:for="{{detailsList.like_users}}" wx:key="icon-list" wx:for-item="itemsIcon" src='{{domain}}/uc_server/avatar.php?uid={{itemsIcon.uid}}&size=small'></image>
+        </view>
+        <text>{{detailsList.likecount}}人喜欢</text>
+    </view>
+    <view class="user-publish" wx:for="{{detailsList.comment.comment_list}}" wx:key="post-info" wx:for-item="items" wx:for-index="index">
+        <view class="number">{{index+1}}楼</view>
+        <view class="zan">
+            <image class="icon-zan" src="/images/icon-zan-bottom-normal.png"></image>
+            <text>{{items.likecount}}</text>
+        </view>
+        <image class="touxiang" wx:for="{{detailsList.comment.comment_list}}" wx:key="icon-list" wx:for-item="itemsIcon" src='{{domain}}/uc_server/avatar.php?uid={{itemsIcon.uid}}&size=small'></image>
+        <view class="information">
+            <text class="name">{{items.username}}<text class="vip-static">{{items.usergroup_level}}</text></text>
+            <text class="time">{{items.ctime_format}}</text>
+        </view>
+        <text class="speak">{{items.content}}</text>
+    </view>
+    <view class="fixed">
+        <image class="huifu" src="/images/icon-comment.png"></image>
+        <input class="comment-input" adjust-position="true" confirm-type="send" bindconfirm="bindInputSend" placeholder="说点什么吧" />
+        <image class="zan-img" src="/images/icon-zan-bottom-normal.png"></image>
+    </view>
+</view>

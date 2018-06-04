@@ -1,0 +1,76 @@
+.title{
+    padding:54rpx 60rpx;
+    border-bottom:1rpx solid #dddddd;
+}
+.title input{
+    font-size:32rpx;
+    font-family: "Noto Sans Regular";
+    box-sizing: border-box;
+    padding-left:0;
+    margin:0;
+}
+.section{
+    padding:60rpx;
+}
+.section textarea{
+    font-size:32rpx;
+    font-family: "Noto Sans Regular";
+    box-sizing: border-box;
+    padding-left:0;
+    margin:0;
+}
+.upImg {
+    padding:40rpx 0 40rpx 60rpx;
+    border-top:15rpx solid #eeeeee;
+    border-bottom:15rpx solid #eeeeee;
+}
+.upImg-list{
+    width:196rpx;
+    height:184rpx;
+    float:left;
+    margin-right:20rpx;
+    margin-bottom:20rpx;
+    border:2rpx solid #dddddd;
+    border-radius: 10rpx;
+    position: relative;
+}
+.delete-btn{
+    width:35rpx;
+    height:35rpx;
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:99;
+}
+.upImg .initial{
+    border:2rpx dashed #dddddd;
+}
+.upload{
+    width:196rpx;
+    height:184rpx;
+    border-radius: 10rpx;
+}
+.upImg .bg-img{
+    margin:50rpx 58rpx;
+    width:80rpx;
+    height:80rpx;
+}
+.release{
+    width:90%;
+    background-color:#ff3c50;
+    color:#fff;
+    font-size:32rpx;
+    margin-top:70rpx;
+    margin-bottom:70rpx;
+}
+
+
+
+
+
+
+
+
+
+
+

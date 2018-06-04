@@ -1,0 +1,5 @@
+/* pages/webView/webView.wxss */
+.page-section{
+    box-sizing: border-box;
+    height:100%;
+}

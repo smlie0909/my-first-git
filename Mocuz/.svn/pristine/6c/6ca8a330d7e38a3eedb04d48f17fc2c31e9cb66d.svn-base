@@ -1,0 +1,33 @@
+/**
+ * 小程序配置文件
+ */
+<<<<<<< .mine
+let config = {
+    APIServer: "http://utf8develop.mocuz.com",
+    //无sharecircle接口
+    API_URL: 'http://utf8develop.mocuz.com/mocuz/42/index.php?mod=',
+    //sharecircle接口
+    API_URL_: 'http://utf8develop.mocuz.com/mocuz/manage/index.php?/api/sharecircle/',
+    // 聚合
+    webView:'http://juhe.mocuz.com/index.php?/api/article/view2/',
+    // 首页帖子列表
+||||||| .r53946
+
+var config = {
+    APIServer: ' http://utf8develop.mocuz.com',
+    //首页
+    productLibrary: 'http://demo.mocuz.com/mocuz/tests/index.php?url=http://bbs.mocuz.com/mocuz/3.0/index.php?mod=bootstart',
+=======
+let config = {
+    APIServer: "http://utf8develop.mocuz.com",
+    //无sharecircle接口
+    API_URL: 'http://utf8develop.mocuz.com/mocuz/42/index.php?mod=',
+    //sharecircle接口
+    API_URL_: 'http://utf8develop.mocuz.com/mocuz/manage/index.php?/api/sharecircle/',
+    // 首页帖子列表
+>>>>>>> .r54717
+    homeList:"http://utf8develop.mocuz.com/mocuz/42/index.php?debug_key=moczu%23%23%23!!!!2015887&mocuz_debug=1&mocuz_encrypt=1&mod=homelist&pool_status=1",
+    //banner列表
+    bannerList: "http://demo.mocuz.com/mocuz/tests/index.php?url=http://www.mocuz.com/api_index/index/device/common/version/3.0/mod/common/act/GetLuanch_Advert"
+};
+module.exports = config

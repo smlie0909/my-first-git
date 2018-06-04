@@ -1,0 +1,48 @@
+const DES3 = require('../../utils/DES3.min').des;
+const hotUrl = require('../../config').hotList;
+const app = getApp();
+Page({
+    data: {
+        id:"",
+        title:""
+    },
+    onLoad: function (options) {
+        // console.log(options)
+        let that = this;
+        that.setData({
+            id: options.id,
+            title: options.tname
+        })
+        wx.showToast({
+            title: '数据加载中',
+            icon: 'loading',
+            duration: 1000,
+            mask: true
+        });
+        this.requestHotlistDate()
+    },
+    // 加载热门话题数据
+    requestHotlistDate: function () {
+        let that = this;
+        let dir = '{"auth":"","page":"2","tid":"' + that.data.id + '","tname":"' + that.data.title +'"}';
+        let des3en = DES3.encrypt(app.globalData.key, dir);
+        wx.request({
+            url: hotUrl,
+            method: 'POST',
+            data: des3en,
+            header: {
+                'content-type': 'application/json'
+            },
+            success: function (res) {
+                // console.log(res.data)
+                that.setData({
+                    
+                })
+            }
+        })
+        
+    },
+    bindInputSend:function(e){
+        console.log(e.detail.value)
+    },
+});

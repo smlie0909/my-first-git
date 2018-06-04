@@ -1,0 +1,70 @@
+/* pages/topicList/topicList.wxss */
+.header{
+    font-size:30rpx;
+    background:#eeeeee;
+    padding:20rpx 40rpx;
+}
+.mood{
+    padding:25rpx 37rpx 25rpx 40rpx;
+    display:flex;
+    align-items:center;
+    border-bottom:1rpx solid #dddddd;
+    overflow-y:hidden;
+}
+.words{
+    display:flex;
+    flex-direction: column;
+    font-size:32rpx;
+    width:80%;
+}
+.words .caption{
+    margin-bottom:10rpx;
+    width:100%;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:1; 
+}
+.first .words{
+    width:auto;
+}
+.mood .gray{
+    font-size:24rpx;
+    color:#999999;
+    display:block;
+}
+.icon{
+    width:50rpx;
+    height:50rpx;
+}
+.title{
+    font-size:32rpx;
+    margin-left:20rpx;
+}
+.switch{
+    display:flex;
+    align-items: center;
+}
+.switch image{
+    width:34rpx;
+    height:34rpx;
+    margin-right:20rpx;
+
+}
+.title-list{
+    display:flex;
+    align-items: center;
+}
+.just-spa{
+    justify-content: space-between;
+}
+.hot-list{
+    width:100rpx;
+    height:100rpx;
+    border-radius: 5rpx;
+    margin-right:30rpx;
+}
+.gray .blue{
+    color:#53a7f0;
+}

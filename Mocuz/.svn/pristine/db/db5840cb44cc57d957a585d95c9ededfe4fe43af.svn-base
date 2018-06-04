@@ -1,0 +1,98 @@
+.container {
+    flex-direction: row;
+    width:100%;
+}
+.content-left{
+    width:27%;
+    height:100vh;
+    box-sizing: border-box;
+}
+.content-right{
+    width:73%;
+    height:100vh;
+    border-left:10rpx solid #eeeeee;
+    border-top:1rpx solid #dddddd;
+    border-bottom:1rpx solid #dddddd;
+    box-sizing: border-box;
+}
+.foorumlsit{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    margin:0 40rpx 0 30rpx;
+    border-bottom:1rpx solid #dddddd;
+    padding:40rpx 0;
+    
+}
+.address_top{
+    padding-bottom:40rpx;
+    line-height:30rpx;
+    font-size:30rpx;
+}
+.address{
+    display:flex;
+    align-items: center; 
+    justify-content: space-between;
+    width: 100%;
+}
+.address view{
+    display:flex;
+    align-items: center;
+}
+.foorumlsit image{
+    width:70rpx;
+    height:70rpx;
+    border-radius: 8rpx;
+    display: inline-block;
+}
+.btn{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:114rpx;
+    height:50rpx;
+    border-radius: 25rpx;
+    font-weight: bold;
+    font-size:24rpx;
+    box-sizing: border-box;
+}
+.unfollow{
+    color:#999999;
+    border:1rpx solid #999999;
+}
+.follow{
+    color:#ff3252;
+    border:1rpx solid #ff3252;
+}
+.title{
+    font-size:30rpx;
+    line-height:30rpx;
+    margin-left:30rpx;
+    display: inline-block;
+    width:230rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.scroll-tab-item{
+    font-size:30rpx;
+    line-height:30rpx;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:39rpx 0;
+    border-top:1rpx solid #dddddd;
+}
+.scroll-tab-item:last-child{
+    border-bottom:1rpx solid #dddddd;
+}
+.active{
+    border-left:6rpx solid #ff3252;
+    box-sizing: border-box;
+}
+.default{
+    border-left:6rpx solid #ffffff;
+    box-sizing: border-box;
+    color:#aaaaaa;
+}

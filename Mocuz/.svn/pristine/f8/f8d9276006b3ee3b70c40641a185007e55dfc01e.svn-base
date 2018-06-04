@@ -1,0 +1,18 @@
+<view class="container">
+    <scroll-view class="content-left" scroll-y>
+        <view class="scroll-tab-item {{curIndex==index ? 'active' : 'default'}}"  bindtap="jumpTo" data-index="{{index}}" wx:for="{{sectionIconData}}" wx:for-item="items" wx:key="item">{{items.name}}</view>
+    </scroll-view>
+    <scroll-view scroll-into-view="{{toView}}" scroll-with-animation="true" class="content-right" scroll-y current="{{currentTab}}">
+        <block wx:for="{{childArray.forumlist}}" wx:for-item="items" wx:key="item" >
+            <view class="foorumlsit" catchtap="jumpTemplate"> 
+                <view class="address">
+                    <view>
+                        <image src="{{items.icon}}"></image>
+                        <text class="title">{{items.name}}</text>
+                    </view>
+                    <text class="btn {{unfollow == 0?'follow':'unfollow'}}" id="{{items.fid}}" catchtap="onFollow">{{follow}}</text>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+</view>

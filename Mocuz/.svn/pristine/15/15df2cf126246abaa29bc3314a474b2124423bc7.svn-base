@@ -1,0 +1,94 @@
+<view class="container">
+    <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="lower">
+        <view class="mood first">
+            <image class="graphic" src='/images/icon-graphic.png'></image>
+            <view class="words">
+                <text>此时此刻的心情</text>
+                <text class="gray">第一次分享给你的同城好友吧</text>
+            </view>
+        </view>
+        <view class="mood just-spa">
+            <view class="title-list">
+                <image class="icon" src="/images/icon-topic.png"></image>
+                <text class="title">热门话题</text>
+            </view>
+            <view class="switch" bindtap='anotherBatch'>
+                <image src="/images/icon-refresh.png"></image>
+                <text class="gray">换一批</text>
+            </view> 
+        </view>
+        <navigator class="mood" wx:for="{{topicsData}}" wx:key="property">
+            <image class="hot-list" src='{{item.listimg}}'></image>
+            <view class="words">
+                <text class="caption">{{item.title}}</text>
+                <text class="gray">已有<text class="blue">{{item.involcount}}</text>人参与 {{item.piccount}}张照片</text>
+            </view>
+        </navigator>
+        <view class="mood">
+            <view class="title-list">
+                <image class="icon" src="/images/icon-hot.png"></image>
+                <text class="title">人气排行</text>
+            </view>
+        </view>
+        <view class="mood">
+            <view class="template {{index>2?'center':'left'}}" wx:for="{{rankingData}}" wx:key="property" wx:for-index="index">
+                <image class="popularity" src='{{item.img}}'></image>
+                <view class="user">
+                    <block wx:if="{{index==0}}">
+                        <image src="../../images/icon-crown1.png"></image>
+                    </block>
+                    <block wx:elif="{{index==1}}">
+                        <image src="../../images/icon-crown2.png"></image>
+                    </block>
+                    <block wx:elif="{{index==2}}">
+                        <image src="../../images/icon-crown3.png"></image>
+                    </block>
+                    <block wx:else></block>
+                    <text class="name">{{item.username}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="user-publish" wx:for="{{hotData}}" wx:key="post-info" wx:for-index="index" id="{{item.id}}" catchtap='jumpDetails'>
+            <image class="touxiang" src='{{item.avatar}}'></image>
+            <view class="information">
+                <text class="name" wx:if="{{!item.usergroup_level.level==0}}">{{item.author}}<text class="{{item.usergroup_level.gender==1?'boy':(item.usergroup_level.gender==2?'girl':'vip-static')}}">V{{item.usergroup_level.level}}</text></text>
+            <text class="name" wx:else>{{item.author}}<text class="{{item.usergroup_level.gender==1?'boy':(item.usergroup_level.gender==2?'girl':'vip-static')}}">V1</text></text>
+                <text class="time">{{item.showtime}}</text>
+            </view>
+            <text class="speak">{{item.message}}</text>
+            <view class="speak-img">
+                <image wx:for="{{item.sortlist}}" wx:key="post-list" wx:for-item="itemsImg" src='{{itemsImg.thumb}}'></image>
+            </view>
+            <view class="comment-icon">
+                <image src='/images/icon-like-normal.png' catchtap="like"></image>
+                <text>{{item.likecount}}</text>
+                <image src='/images/icon-comment.png' catchtap="comment"></image>
+                <text>{{item.replylist.length}}</text>
+            </view>
+            <view class="interaction">
+                <view class='user-img'>
+                    <view class="img-box">
+                        <image wx:for="{{item.praiselist}}" wx:key="icon-list" wx:for-item="itemsIcon" src='{{domain}}/uc_server/avatar.php?uid={{itemsIcon}}&size=small'></image>
+                    </view>
+                    <text>{{item.likecount}}人喜欢</text>
+                </view>
+                <view class="comment {{isExpanded==1?'unExpanded':(isExpanded==2?'isExpanded':'')}}"  wx:if="{{!item.replylist.length==0}}">
+                    <block wx:for="{{item.replylist}}" wx:for-item="itemsreply" wx:key="replylist" wx:for-index="comment">
+                        <view>
+                            <text class="comment-author">{{itemsreply.author}}</text>：<text>{{itemsreply.message}}</text>
+                        </view>
+                    </block>
+                </view>
+                <view wx:else></view> 
+            </view>
+        </view>
+        <view class="loading" wx:if="{{hasMore}}">
+            <view class="loading-title">正在加载中</view>
+            <image class="loading-img" src="/images/loading.gif"></image>
+        </view>
+        <view class="loading" wx:else>没有更多数据</view> 
+    </scroll-view>
+</view>
+<navigator class="fatie-fixed" url="../post/post">
+    <image src="/images/icon-fatie.png"></image>
+</navigator>

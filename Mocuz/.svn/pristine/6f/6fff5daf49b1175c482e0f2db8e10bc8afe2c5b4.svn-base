@@ -1,0 +1,32 @@
+<import src="../template/template.wxml" />
+<view class="container">
+    <view class="title" wx:if='{{pagetype=="community"}}'>
+        <input type="text" placeholder-style="color:#999999;font-size:32rpx;font-family: 'Noto Sans Regular';" placeholder="#点击添加标题#" maxlength="22" focus="{{focus}}" bindblur="title" bindinput="title"/>
+    </view>
+    <view class="topic-title" wx:elif='{{pagetype=="local"}}'>
+        <view class="title-L">
+            <view class="title-H">选择话题</view>
+            <view class="topic-L">
+                <text wx:for="{{topicsList}}" wx:key="" catchtap='titleFill' data-title="#{{item.title}}#">#{{item.title}}#</text>
+            </view>
+        </view>
+        <navigator class="title-R" url='../topicList/topicList'>
+            <text>更多</text>
+            <image src="/images/icon-add.png"></image>
+        </navigator>
+    </view> 
+    <view class="section">
+        <textarea bindblur="bindTextAreaBlur" placeholder-style="width:630rpx;color:#999999;font-size:32rpx;font-family: 'Noto Sans Regular';" maxlength="400" auto-height placeholder="说点什么吧..." bindblur="content" bindinput="content" value='{{content}}'/>
+    </view>
+    <view class="upImg"  wx:if='{{pagetype=="local"}}'>
+        <view class="upImg-list" catchtap="deleteImg" wx:for="{{pics}}" wx:key="item">
+            <image class="upload" src="{{item}}" data-index="{{index}}" catchtap="previewImg" mode="aspecFill"></image>
+            <image class="delete-btn" src="/images/icon-close.png" data-index="{{index}}" catchtap="deleteImg"></image>
+        </view>
+        <view class="upImg-list initial" bindtap="choose" hidden='{{pics.length>8}}'>
+            <image class="bg-img" src="/images/icon-tupian.png"></image>
+        </view>
+    </view>
+    <button class="release" bindtap='release'>发布</button>
+</view>
+<template is="toast" data="{{txt,isShow,iconClass}}"></template>

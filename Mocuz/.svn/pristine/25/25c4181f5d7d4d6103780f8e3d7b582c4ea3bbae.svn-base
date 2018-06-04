@@ -1,0 +1,124 @@
+<view class="container">
+    <view>
+        <scroll-view  class="swiper-tab" scroll-x="true" scroll-left="{{scrollLeft}}">
+            <view class="swiper-tab-item {{currentTab==0 ? 'active' : 'default'}}" data-current="0" bindtap="swichNav">全部</view> 
+            <view class="swiper-tab-item {{currentTab==1 ? 'active' : 'default'}}" data-current="1" bindtap="swichNav">精华</view> 
+            <view class="swiper-tab-item {{currentTab==2 ? 'active' : 'default'}}" data-current="2" bindtap="swichNav">我是男生</view> 
+            <view class="swiper-tab-item {{currentTab==3 ? 'active' : 'default'}}" data-current="3" bindtap="swichNav">我是女生</view>
+            <view class="swiper-tab-item {{currentTab==4 ? 'active' : 'default'}}" data-current="4" bindtap="swichNav">全部</view> 
+            <view class="swiper-tab-item {{currentTab==5 ? 'active' : 'default'}}" data-current="5" bindtap="swichNav">精华</view> 
+            <view class="swiper-tab-item {{currentTab==6 ? 'active' : 'default'}}" data-current="6" bindtap="swichNav">我是男生</view> 
+            <view class="swiper-tab-item {{currentTab==7 ? 'active' : 'default'}}" data-current="7" bindtap="swichNav">我是女生</view>
+        </scroll-view>
+    </view>
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="switchTab"> 
+        <swiper-item> 
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}">
+                <navigator class="post">
+                    <view class="topic-title">
+                        <image class="touxiang" src="/images/touxiang.jpg"></image>
+                        <view class="name">
+                            <text>大债主<text class="vip-static">V0</text></text>
+                            <text class="time"></text>
+                        </view>
+                    </view>
+                    <view class="transverse">
+                        <view class="photo">
+                            <image src="/images/touxiang.jpg"></image>
+                        </view>
+                        <view class="especially">
+                            <text class="title">[风马牛一号]卫星在酒泉卫星发射中心搭载长征二号丁火箭顺利升空</text>              
+                            <view class="browse">
+                                <text class="time">1天</text>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+                <navigator class="post"> 
+                    <view class="topic-title">
+                        <image class="touxiang" src="/images/touxiang.jpg"></image>
+                        <view class="name">
+                            <text>大债主<text class="vip-static">V0</text></text>
+                            <text class="time"></text>
+                        </view>
+                    </view>
+                    <text class="title">盱眙县市场监督局:“三突出”开展春季校园周边市场综合整治工作</text>
+                    <view class="photo">
+                        <image src="/images/touxiang.jpg"></image>
+                        <image src="/images/touxiang.jpg"></image>
+                        <image src="/images/touxiang.jpg"></image>
+                    </view>
+                    <view class="browse"></view>
+                </navigator>
+                <navigator class="post"> 
+                    <view class="topic-title">
+                        <image class="touxiang" src="/images/touxiang.jpg"></image>
+                        <view class="name">
+                            <text>大债主<text class="vip-static">V0</text></text>
+                            <text class="time">19分钟前</text>
+                        </view>
+                    </view>
+                    <text class="title">盱眙县市场监督局:“三突出”开展春季校园周边市场综合整治工作</text>
+                    <view class="browse"></view>
+                </navigator>
+            </scroll-view>
+        </swiper-item> 
+        <swiper-item> 
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}">
+                 <navigator class="post">
+                    <view class="topic-title">
+                        <image class="touxiang" src="/images/touxiang.jpg"></image>
+                        <view class="name">
+                            <text>大债主</text>
+                            <text class="time">19分钟前</text>
+                        </view>
+                        <text class="vip-static">V0</text>
+                    </view>
+                    <view class="transverse">
+                        <view class="photo">
+                            <image src="/images/touxiang.jpg"></image>
+                        </view>
+                        <view class="especially">
+                            <text class="title">[风马牛一号]卫星在酒泉卫星发射中心搭载长征二号丁火箭顺利升空</text>              
+                            <view class="browse">
+                                <text class="time">1天</text>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+            </scroll-view>
+        </swiper-item> 
+        
+        
+        <swiper-item> 
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}">
+                <view>好友</view> 
+            </scroll-view>
+        </swiper-item> 
+        <swiper-item> 
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}">
+                <view>好友</view> 
+            </scroll-view>
+        </swiper-item> 
+        <swiper-item> 
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}">
+                <view>好友</view> 
+            </scroll-view>
+        </swiper-item> 
+        <swiper-item> 
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}">
+                <view>好友</view> 
+            </scroll-view>
+        </swiper-item> 
+        <swiper-item> 
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}">
+                <view>好友</view> 
+            </scroll-view>
+        </swiper-item> 
+        <swiper-item> 
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}">
+                <view>好友</view> 
+            </scroll-view>
+        </swiper-item> 
+    </swiper> 
+</view>

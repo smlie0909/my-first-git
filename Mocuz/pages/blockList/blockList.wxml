@@ -1,0 +1,22 @@
+<import src="../template/template.wxml" />
+<view class="container">
+    <view>
+        <scroll-view  class="swiper-tab" scroll-x="true" scroll-left="{{scrollLeft}}">
+            <view wx:for="{{threadtypes}}" wx:key="" wx:for-index="index" class="swiper-tab-item {{currentTab==index ? 'active' : 'default'}}" data-current="{{index}}" bindtap="swichNav" data-id="{{item.id}}">{{item.name}}</view> 
+        </scroll-view>
+    </view>
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="switchTab"> 
+        <swiper-item wx:for="{{threadtypes}}" wx:for-index="index" wx:for-item="item" wx:key=""> 
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}" bindscrolltolower="lower">
+                <block wx:for="{{allList}}" wx:for-index="index" wx:for-item="items" wx:key="">
+                    <template is="newsListReply" data="{{items}}"></template>
+                </block>
+                <view class="loading" wx:if="{{hasMore}}">
+                    <view class="loading-title">正在加载中</view>
+                    <image class="loading-img" src="/images/loading.gif"></image>
+                </view>
+                <view class="loading" wx:else>没有更多数据</view> 
+            </scroll-view>
+        </swiper-item> 
+    </swiper> 
+</view>

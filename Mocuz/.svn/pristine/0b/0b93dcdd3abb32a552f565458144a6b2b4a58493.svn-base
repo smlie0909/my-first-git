@@ -1,0 +1,272 @@
+const app = getApp();
+const util = require('../../utils/util.js')
+const WxParse = require('../../wxParse/wxParse.js')
+Page({
+    data: {
+        domain: app.globalData.domain,//域名
+        id:"",
+        detailsList:[],
+        comment_list:[],
+        value:"",
+        responsecount:"",
+        select:"false",
+        pageIndex: 1, //页码
+    },
+    onLoad: function (options) {
+        // console.log(options)
+        wx.showToast({
+            title: '数据加载中',
+            icon: 'loading',
+            duration: 1000,
+            mask: true
+        });
+        this.setData({
+            id:this.options.tid,
+            title:this.options.details,
+            gender: this.options.gender,
+            type:this.options.type
+        })
+        if (this.options.details == "local"){
+            this.requestLocalDetailsDate()
+        } else if (this.options.details == "community"){
+            this.requestCommunDetails()
+        } else if (this.options.details == "index" && this.options.type == 1) {
+            this.requestCommunDetails()
+        } else if (this.options.details == "index" && this.options.type == 2) {
+            this.requestLocalDetailsDate()
+        }
+    },
+    //   加载更多
+    lower: function () {
+        this.setData({
+            pageIndex: this.data.pageIndex + 1, //每次下拉到底部触发 pageIndex+1
+        })
+        // this.requestNewslistDate();
+    },
+    bindInputSend:function(e){
+        this.setData({
+            value: e.detail.value
+        })
+        if (!app.globalData.userInfo) {
+            wx.navigateTo({
+                url: '../login/login',
+            })
+        }else{
+            if (this.options.details == "local") {
+                this.localComment()
+            } else if (this.options.details == "community"){
+                this.comComment()
+            } else if (this.options.details == "index" && this.options.type == 1) {
+                this.comComment()
+            } else if (this.options.details == "index" && this.options.type == 2) {
+                this.localComment()
+            }
+        }
+        
+    },
+    // 本地圈帖子详情
+    requestLocalDetailsDate: function () {
+        let that = this;
+        let dir = '';
+        if (app.globalData.userInfo) {
+            dir = '{"auth":"' + app.globalData.userInfo.auth + '","postid":"' + that.data.id + '"}'; 
+        }else{
+            dir = '{"auth":"","postid":"' + that.data.id + '"}'; 
+        }
+        
+        util.api_massage("post/weixin_post_detail", dir, res => {
+            // console.log(res.data)
+            let article = res.data.usergroup_level;
+            that.setData({
+                detailsList: res.data,
+                comment_list: res.data.comment.comment_list,
+                like_users: res.data.like_users,
+                responsecount: res.data.responsecount,
+                likecount: res.data.likecount,
+                authorid: res.data.uid,
+                ctime_format: res.data.ctime_format,
+                author: res.data.username,
+                subject: res.data.content_title,
+                content: res.data.content,
+                readcount: res.data.readcount,
+                praid:res.data.praid
+            })
+            WxParse.wxParse('article', 'html', article, that, 15);
+            
+        }, res => {
+            wx.hideNavigationBarLoading();
+        }, () => {
+            wx.hideNavigationBarLoading();
+        })
+    },
+    // 社区帖子详情
+    requestCommunDetails: function () {
+        let that = this;
+        let dir = '';
+        if (app.globalData.userInfo) {
+            dir = '{"auth":"' + app.globalData.userInfo.auth + '"}';
+        } else {
+            dir = '{"auth":""}';
+        }
+        // console.log(app.globalData.userInfo.auth)
+        util.api_call("viewthread&tid=" + that.options.tid + "&uid=" + that.options.uid, dir, res => {
+            // console.log(res)
+            let article_content = res.postlist[0].message;
+            article_content = article_content.replace(/<img/i,"<img ");           
+            that.setData({
+                comment_list:res.postlist,
+                detailsList: res.thread,
+                authorid: res.postlist[0].authorid,
+                ctime_format: res.postlist[0].dateline,
+                author:res.postlist[0].author,
+                avatar: res.postlist[0].avatar,
+                authortitle: res.postlist[0].authortitle,
+                subject: res.postlist[0].subject,
+                content: res.postlist[0].message,
+                praid: res.thread.praid,
+                responsecount: res.thread.replies,
+                readcount: res.thread.views,
+                likecount: res.thread.praisenum,
+            })
+            WxParse.wxParse('article_content', 'html', article_content, that, 15);            
+        }, res => {
+            wx.hideNavigationBarLoading();
+        }, () => {
+            wx.hideNavigationBarLoading();
+        })
+    },
+    //本地圈评论
+    localComment:function(){
+        let that = this;
+        let dir = '{"auth":"' + app.globalData.userInfo.auth + '","comment":"' + this.data.value + '","postid":"' + this.data.detailsList.id + '","to_uid":"' + this.data.detailsList.uid + '","to_username":"' + this.data.detailsList.username +'"}';
+        if (app.globalData.userInfo){
+            if (this.data.value == "") {
+                app.toastShow(that, "评论信息不能为空！", "icon-xinxitianxie");
+            } else {
+                util.api_massage("comment/send_comment", dir, res => {
+                    that.data.comment_list.push({
+                        "uid": app.globalData.userInfo.uid,
+                        "username": app.globalData.userInfo.username,
+                        "content": that.data.value,
+                        "ctime_format": "刚刚",
+                        "likecount": 0,
+                    })
+                    that.setData({
+                        comment_list: that.data.comment_list,
+                        responsecount: parseInt(that.data.responsecount) + 1,
+                        value: ''
+                    });
+                }, res => {
+                    wx.hideNavigationBarLoading();
+                }, () => {
+                    wx.hideNavigationBarLoading();
+                });
+            }
+        }else{
+            wx.navigateTo({
+                url: '../login/login',
+            })
+        }  
+    },
+    //社区评论
+    comComment:function(){
+        let that = this;
+        let dir = '{"auth":"' + app.globalData.userInfo.auth + '","message":"' + this.data.value + '","tid":"' + this.options.tid + '","types":"thread"}';
+        if (app.globalData.userInfo) {
+            if (this.data.value == "") {
+                app.toastShow(that, "评论信息不能为空！", "icon-xinxitianxie");
+            } else {
+                util.api_call("newreply", dir, res => {
+                    that.data.comment_list.push({
+                        "authorid": app.globalData.userInfo.uid,
+                        "author": app.globalData.userInfo.username,
+                        "authortitle": app.globalData.userInfo.grouptitle,
+                        "gender": app.globalData.userInfo.gender,
+                        "message": that.data.value,
+                        "dateline": "刚刚",
+                        "likecount": 0
+                    })
+                    that.setData({
+                        comment_list: that.data.comment_list,
+                        responsecount: parseInt(that.data.responsecount) + 1,
+                        value: ''
+                    });
+                    // console.log(that.data.comment_list)
+                }, res => {
+                    wx.hideNavigationBarLoading();
+                }, () => {
+                    wx.hideNavigationBarLoading();
+                });
+            }
+        } else {
+            wx.navigateTo({
+                url: '../login/login',
+            })
+        }  
+    },
+    // 点赞
+    zan:function(){
+        if (!app.globalData.userInfo) {
+            wx.navigateTo({
+                url: '../login/login',
+            })
+        }else{
+            if (this.options.details == "local") {
+                this.localZan()
+            } else if (this.options.details == "community") {
+                this.communZan()
+            } else if (this.options.details == "index" && this.options.type == 1) {
+                this.communZan()
+            } else if (this.options.details == "index" && this.options.type == 2) {
+                this.localZan()
+            }
+        }
+    },
+    //社区帖子点赞
+    communZan:function(){
+        let that = this
+        let dir = '{"auth":"' + app.globalData.userInfo.auth + '","id":"' + this.options.tid + '","uid":"' + app.globalData.userInfo.uid + '","idtype":"tid","server":"1","type":"click"}';
+        util.api_call("praisethread", dir, res => {
+            if(res.errcode==0){
+                that.setData({
+                    likecount: parseInt(that.data.likecount) + 1,
+                    praid:res.praid
+                });
+                wx.showToast({
+                    title: res.errmsg,
+                });
+            }else{
+                wx.showToast({
+                    title: res.errmsg,
+                });
+            }
+        }, res => {
+            wx.hideNavigationBarLoading();
+        }, () => {
+            wx.hideNavigationBarLoading();
+        });
+    },
+    localZan:function(e){
+        let that = this;
+        if (app.globalData.userInfo.auth) {
+            let dir = '{"auth":"' + app.globalData.userInfo.auth + '","postid":"' + that.data.id + '","to_uid":"' + app.globalData.userInfo.uid + '"}';
+            util.api_massage("post/like_kh", dir, res => {
+                // console.log(res)
+                if (res.errcode == 0 && that.data.praid == '') {
+                    that.setData({
+                        likecount: parseInt(that.data.likecount) + 1,
+                        praid: true
+                    });
+                } else {
+                    wx.showToast({
+                        title: '您已赞过了',
+                    });
+                }
+            }, null, null)
+        } else {
+            wx.navigateTo({
+                url: '../login/login',
+            })
+        }
+    }
+});

@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="container">
+    <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="lower" bindscrolltoupper="upper">
+        <swiper indicator-dots="true" autoplay="true" interval="3000" duration="800" circular="true" style="height:340rpx;"> 
+            <block wx:for="{{bannerData}}" wx:key="property" wx:for-item="items">  
+                <swiper-item> 
+                    <navigator url="{{items.typedata.link}}"  hover-class="navigator-hover">  
+                        <image src="{{items.image}}" class="slide-image"/>  
+                    </navigator> 
+                </swiper-item>  
+            </block>  
+        </swiper>
+        <!-- 帖子 -->
+        <view class="content"  hidden="{{isHideLoadMore}}">
+            <block wx:for="{{newsData}}" wx:for-index="id" wx:for-item="itemsTitle" wx:key="item" data="{{...item}}">
+                <view class="post transverse" id="{{itemsTitle.cid}}" bindtap='jumpDetails' wx:if="{{itemsTitle.img.length==1}}" >
+                    <view class="alone">
+                        <view class="especially">
+                            <text class="title">{{itemsTitle.title}}</text>              
+                            <view class="info">
+                                <text class="read">{{itemsTitle.popularity}}阅读</text>
+                                <text class="time">{{itemsTitle.showtime}}</text>
+                            </view>
+                        </view>
+                        <view class="photo">
+                            <image wx:for="{{itemsTitle.img}}" wx:for-item="items" wx:key="itemLsit" src="{{items}}"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="post" bindtap='jumpDetails' id="{{itemsTitle.cid}}" wx:else="{{itemsTitle.img.length>1}}">
+                    <view class="alone">
+                        <view class="especially">
+                            <text class="title">{{itemsTitle.title}}</text>
+                        </view>
+                        <view class="photo">
+                            <image wx:for="{{itemsTitle.img}}" wx:for-item="items" wx:key="itemLsit" src="{{items}}"></image>
+                        </view>
+                    </view>
+                    <view class="info">
+                        <text class="read">{{itemsTitle.popularity}}阅读</text>
+                        <text class="time">{{itemsTitle.showtime}}</text>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="loading" wx:if="{{hasMore}}">
+            <view class="loading-title">正在加载中</view>
+            <image class="loading-img" src="/images/loading.gif"></image>
+        </view>
+        <view class="loading" wx:else>没有更多数据</view> 
+    </scroll-view>
+</view>

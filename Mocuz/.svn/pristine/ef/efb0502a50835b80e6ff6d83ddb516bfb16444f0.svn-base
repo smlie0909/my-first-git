@@ -1,0 +1,4 @@
+<!--pages/webView/webView.wxml-->
+<view class="page-section">
+    <web-view src="{{src}}"></web-view>
+</view>

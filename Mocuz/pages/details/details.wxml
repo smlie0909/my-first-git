@@ -1,0 +1,61 @@
+<import src="../../wxParse/wxParse.wxml" /> 
+<import src="../template/template.wxml" />
+<view class="container">
+    <scroll-view scroll-y="true" style="height: 100vh;">
+        <view class="content">
+            <view class="user">
+                <image src='{{domain}}/uc_server/avatar.php?uid={{authorid}}&size=small'></image>
+                <view class="information">
+                    <view class="name">{{author}}
+                        <view class="vip-static"><template is="wxParse" data="{{wxParseData:article.nodes}}"/></view>
+                        <text class="{{gender==1?'boy':(gender==2?'girl':'vip-static')}}" wx:if="{{title=='community'}}">{{authortitle}}</text>
+                    </view>
+                    <text class="time">{{ctime_format}}</text>
+                </view>
+            </view>
+            <text class="title">{{subject}}</text>
+            <text class="source" wx:if="{{detailsList.forumname!= null}}">来自<text>{{detailsList.forumname}}</text></text>
+            <text class="words">{{content}}</text> 
+            <view class="imgbox">
+                <image class="img" mode="aspectFill" wx:for="{{detailsList.img_arr}}" wx:key="post-info" wx:for-item="itemsImg" src="{{itemsImg.path}}" catchtap="previewImg" data-index="{{index}}"></image>
+            </view>
+        </view>
+        <view class="comment-num">
+            <text>评论 {{responsecount}}</text>
+            <text>点赞 {{likecount==null?0:likecount}}</text>
+            <text>阅读 {{readcount}}</text>
+        </view>
+        <view class="thumbs-up" wx:if="{{likecount!=0}}">
+            <view class="img-box">
+                <image wx:for="{{like_users}}" wx:key="icon-list" wx:for-item="itemsIcon" src='{{domain}}/uc_server/avatar.php?uid={{itemsIcon.uid}}&size=small'></image>
+            </view>
+            <text>{{likecount}}人喜欢</text>
+        </view>
+        <view class="user-publish" wx:for="{{comment_list}}" wx:key="post-info" wx:for-item="items" wx:for-index="index">
+            <view class="number">{{index+1}}楼</view>
+            <!-- <view class="zan">
+                <image class="icon-zan" src="/images/icon-zan-bottom-normal.png"></image>
+                <text>{{items.likecount}}</text>
+            </view> -->
+            <image class="touxiang" wx:for="{{comment_list}}" wx:key="icon-list" wx:for-item="itemsIcon" wx:for-index="_index" wx:if="{{index==_index}}" src='{{domain}}/uc_server/avatar.php?uid={{itemsIcon.uid}}&size=small'></image>
+            <view class="information">
+                <view class="name">{{items.username}}<view class="vip-static"><template is="wxParse" data="{{wxParseData:level.nodes}}"/></view></view>
+                <text class="time">{{items.ctime_format}}</text>
+            </view>
+            <text class="speak">{{items.content}}</text>
+        </view>
+        <block wx:if="{{comment_list.length>1}}">
+            <view class="loading" wx:if="{{hasMore}}">
+                <view class="loading-title">正在加载中</view>
+                <image class="loading-img" src="/images/loading.gif"></image>
+            </view>
+            <view class="loading" wx:else>没有更多数据</view>  
+        </block>
+    </scroll-view>
+    <view class="fixed">
+        <image class="huifu" src="/images/icon-comment.png"></image>
+        <input class="comment-input" adjust-position="true" confirm-type="send" bindconfirm="bindInputSend" placeholder="说点什么吧" value="{{value}}"/>
+        <image class="zan-img" src="{{praid!=''?'/images/icon-zan-bottom-pressed.png':'/images/icon-zan-bottom-normal.png'}}" catchtap='zan'></image>
+    </view>
+</view>
+<template is="toast" data="{{txt,isShow,iconClass}}"></template>

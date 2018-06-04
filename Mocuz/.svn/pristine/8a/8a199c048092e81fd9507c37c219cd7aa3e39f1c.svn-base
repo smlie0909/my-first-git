@@ -1,0 +1,75 @@
+<import src="../template/template.wxml" />
+<view class="container">
+    <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="lower" scroll-top="{{top}}">
+        <!-- 版块列表 -->
+<<<<<<< .mine
+        <view class="section" bindtap=''>
+            <view class="section-list" catchtap="jumpTemplate" wx:for="{{IconData}}" wx:for-index="index" wx:for-item="items" wx:key="IconId" data-title="{{items.blockname}}" id="{{items.target_id}}">
+||||||| .r53975
+        <view class="section">
+            <navigator class="section-list" url='../template/template' wx:for="{{IconData}}" wx:for-index="id" wx:for-item="items" wx:key="IconId">
+=======
+        <view class="section" bindtap=''>
+            <view class="section-list" catchtap="jumpTemplate" wx:for="{{IconData}}" wx:for-index="index" wx:for-item="items" wx:key="IconId" data-title="{{items.name}}" id="{{items.fid}}">
+>>>>>>> .r54717
+                <view class="section-box">
+                    <image src="{{items.icon}}"></image>
+                </view>
+<<<<<<< .mine
+                <text>{{items.blockname}}</text>
+            </view>
+||||||| .r53975
+                <text>{{items.name}}</text>
+            </navigator>
+=======
+                <text>{{items.name}}</text>
+            </view>
+>>>>>>> .r54717
+        </view>
+        <!-- 全部板块 -->
+        <navigator url='../whole/whole' class="sectionAll">
+            <text>全部版块</text>
+            <image src="/images/icon-add.png"></image>
+        </navigator>
+        <!-- tab -->
+        
+        <view class="swiper-tab"> 
+            <view class="{{currentTab==index?'active':'default'}}" bindtap="navbarTap" wx:for="{{navbar}}" data-idx="{{index}}" data-parameter="{{item.parameter}}" wx:key="items">{{item.navtitle}}</view> 
+        </view> 
+        <view class="swiper-box"> 
+            <view hidden="{{currentTab !== 0}}">
+                <block wx:for="{{datelineList}}" wx:for-index="id" wx:for-item="items" wx:key="ListId">
+                    <template is="newsListReply" data="{{items}}"></template>
+                </block>
+                <view class="loading" wx:if="{{hasMore}}">
+                    <view class="loading-title">正在加载中</view>
+                    <image class="loading-img" src="/images/loading.gif"></image>
+                </view>
+                <view class="loading" wx:else>没有更多数据</view> 
+            </view> 
+            <view hidden="{{currentTab !== 1}}">
+                <block wx:for="{{hotList}}" wx:for-index="index" wx:for-item="items" wx:key="ListId">
+                    <template is="newsListReply" data="{{items}}"></template>
+                </block>
+                <view class="loading" wx:if="{{hasMore}}">
+                    <view class="loading-title">正在加载中</view>
+                    <image class="loading-img" src="/images/loading.gif"></image>
+                </view>
+                <view class="loading" wx:else>没有更多数据</view> 
+            </view> 
+            <view hidden="{{currentTab !== 2}}">
+                <block wx:for="{{lastpostList}}" wx:for-index="index" wx:for-item="items" wx:key="ListId">
+                    <template is="newsListReply" data="{{items}}"></template>
+                </block>
+                <view class="loading" wx:if="{{hasMore}}">
+                    <view class="loading-title">正在加载中</view>
+                    <image class="loading-img" src="/images/loading.gif"></image>
+                </view>
+                <view class="loading" wx:else>没有更多数据</view> 
+            </view> 
+        </view>
+    </scroll-view>
+</view>
+<view class="fatie-fixed" catchtap='jumpPost' data-post='community'>
+    <image src="/images/icon-fatie.png"></image>
+</view>

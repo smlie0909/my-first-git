@@ -1,0 +1,112 @@
+<template name="newsListReply">
+    <view class="post" wx:if="{{items.pics.length==1}}" bindtap="jumpDetails" id="{{items.tid}}">
+        <view class="topic-title">
+            <image class="touxiang" src="{{items.avatar}}"></image>
+            <view class="name">
+                <text>{{items.author}}<text class="{{items.usergroup.gender==0?'vip-static':(items.usergroup.gender==1?'girl':'boy')}} ">V{{items.usergroup.level}}</text></text>
+                <text class="time"></text>
+            </view>
+        </view>
+        <view class="transverse">
+            <view class="photo">
+                <image wx:for="{{items.pics}}" wx:for-item="item" wx:key="itemLsit" src="{{item}}"></image>
+            </view>
+            <view class="especially">
+                <text class="title">{{items.subject}}</text>              
+                <view class="browse">
+                    <text>浏览 {{items.likes}}</text>
+                    <text>评论 {{items.replies}}</text>
+                    <text class="time">{{items.time}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="post" wx:else="{{items.pics.length>1}}" bindtap="jumpDetails" id="{{items.tid}}"> 
+        <view class="topic-title">
+            <image class="touxiang" src="{{items.avatar}}"></image>
+            <text class="name">{{items.author}}<text class="{{items.usergroup.gender==2?'vip-static':(items.usergroup.gender==1?'girl':'boy')}}">V{{items.usergroup.level}}</text></text>
+        </view>
+        <text class="title">{{items.subject}}</text>
+        <view class="photo">
+            <image wx:for="{{items.pics}}" wx:for-item="items" wx:key="itemLsit" src="{{items}}"></image>
+        </view>
+        <view class="browse">
+            <text>浏览 {{items.likes}}</text>
+            <text>评论 {{items.replies}}</text>
+            <text class="time">{{items.time}}</text>
+        </view>
+    </view>
+</template>
+<view class="container">
+    <scroll-view scroll-y="true" style="height: 100vh;" bindscrolltolower="lower">
+        <!-- 版块列表 -->
+        <view class="section">
+            <navigator class="section-list" url='../template/template' wx:for="{{IconData}}" wx:for-index="id" wx:for-item="items" wx:key="IconId">
+                <view class="section-box">
+                    <image src="{{items.forumlist[0].icon}}"></image>
+                </view>
+                <text>{{items.name}}</text>
+            </navigator>
+        </view>
+        <!-- 全部板块 -->
+        <navigator url='../whole/whole' class="sectionAll">
+            <text>全部版块</text>
+            <image src="/images/icon-add.png"></image>
+        </navigator>
+        <!-- tab -->
+        
+        <view class="swiper-tab"> 
+            <view class="{{currentTab==index?'active':'default'}}" bindtap="navbarTap" wx:for="{{navbar}}" data-idx="{{index}}" wx:key="items">{{item}}</view> 
+        </view> 
+        <view class="swiper-box"> 
+            <view hidden="{{currentTab !== 0}}">
+                <block wx:for="{{List}}" wx:for-index="id" wx:for-item="items" wx:key="ListId">
+                    <template is="newsListReply" data="{{items}}"></template>
+                </block>
+                <view class="loading" wx:if="{{hasMore}}">
+                    <view class="loading-title">正在加载中</view>
+                    <image class="loading-img" src="/images/loading.gif"></image>
+                </view>
+                <view class="loading" wx:else>没有更多数据</view> 
+            </view> 
+            <view hidden="{{currentTab !== 1}}">
+                <navigator class="post">
+                    <view class="topic-title">
+                        <image class="touxiang" src="../../images/touxiang.jpg"></image>
+                        <view class="name">
+                            <text>张照片<text class="vip-static girl">V1</text></text>
+                            <text class="time"></text>
+                        </view>
+                    </view>
+                    <view class="transverse">
+                        <view class="photo">
+                            <image src="../../images/touxiang.jpg"></image>
+                        </view>
+                        <view class="especially">
+                            <text class="title">抽个小米手机，什么时候发货</text>              
+                            <view class="browse">
+                                <text>阅读 311</text>
+                                <text class="time">2017-8-15 19：43</text>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+                <text class="prompt">没有更多数据</text>
+            </view> 
+            <view hidden="{{currentTab !== 2}}">
+                <block wx:for="{{List}}" wx:for-index="id" wx:for-item="items" wx:key="ListId">
+                    <template is="newsListReply" data="{{items}}"></template>
+                </block>
+                <view class="loading" wx:if="{{!hasMore}}">
+                    <view class="loading-title">正在加载中</view>
+                    <image class="loading-img" src="/images/loading.gif"></image>
+                </view>
+                <view class="loading" wx:else>没有更多数据</view> 
+            </view> 
+        </view>
+    </scroll-view>
+</view>
+<navigator class="fatie-fixed" url="../post/post">
+    <image src="/images/icon-fatie.png"></image>
+</navigator>
+

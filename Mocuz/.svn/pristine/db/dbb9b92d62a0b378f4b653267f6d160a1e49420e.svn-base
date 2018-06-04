@@ -1,0 +1,18 @@
+<view class="container">
+    <view class="title">
+        <input type="text" placeholder-style="color:#999999;font-size:32rpx;font-family: 'Noto Sans Regular';" placeholder="#点击添加标题#" maxlength="22" focus="{{focus}}" />
+    </view>
+    <view class="section">
+        <textarea bindblur="bindTextAreaBlur" placeholder-style="width:630rpx;color:#999999;font-size:32rpx;font-family: 'Noto Sans Regular';" maxlength="400" auto-height placeholder="说点什么吧..." />
+    </view>
+    <view class="upImg">
+        <view class="upImg-list" catchtap="deleteImg" wx:for="{{pics}}" wx:key="item">
+            <image class="upload" src="{{item}}" data-index="{{index}}" catchtap="previewImg" mode="aspecFill"></image>
+            <image class="delete-btn" src="/images/icon-close.png" data-index="{{index}}" catchtap="deleteImg"></image>
+        </view>
+        <view class="upImg-list initial" bindtap="choose" hidden='{{pics.length>8}}'>
+            <image class="bg-img" src="/images/icon-tupian.png"></image>
+        </view>
+    </view>
+    <button class="release">发布</button>
+</view>

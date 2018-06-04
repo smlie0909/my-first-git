@@ -1,0 +1,126 @@
+.title{
+    padding:54rpx 60rpx;
+    border-bottom:1rpx solid #dddddd;
+}
+.topic-title{
+    border-bottom:1rpx solid #dddddd;
+}
+.title input{
+    font-size:32rpx;
+    font-family: "Noto Sans Regular";
+    box-sizing: border-box;
+    padding-left:0;
+    margin:0;
+}
+.section{
+    padding:60rpx;
+}
+.section textarea{
+    font-size:32rpx;
+    font-family: "Noto Sans Regular";
+    box-sizing: border-box;
+    padding-left:0;
+    margin:0;
+}
+.upImg {
+    padding:40rpx 0 40rpx 60rpx;
+    border-top:15rpx solid #eeeeee;
+    border-bottom:15rpx solid #eeeeee;
+}
+.upImg-list{
+    width:196rpx;
+    height:184rpx;
+    float:left;
+    margin-right:20rpx;
+    margin-bottom:20rpx;
+    border:2rpx solid #dddddd;
+    border-radius: 10rpx;
+    position: relative;
+}
+.delete-btn{
+    width:35rpx;
+    height:35rpx;
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:99;
+}
+.upImg .initial{
+    border:2rpx dashed #dddddd;
+}
+.upload{
+    width:196rpx;
+    height:184rpx;
+    border-radius: 10rpx;
+}
+.upImg .bg-img{
+    margin:50rpx 58rpx;
+    width:80rpx;
+    height:80rpx;
+}
+.release{
+    width:90%;
+    background-color:#1ec3c5;
+    color:#fff;
+    font-size:32rpx;
+    margin-top:70rpx;
+    margin-bottom:70rpx;
+}
+.topic-title{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.title-L{
+    padding:0 20rpx;
+}
+.title-H{
+    font-size:28rpx;
+    margin-bottom:10rpx;
+}
+.topic-L text{
+    width:27%;
+    display:inline-block;
+    border:1rpx solid #eeeeee;
+    padding:10rpx;
+    margin-right:10rpx;
+    font-size:24rpx;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    border-radius: 56rpx;
+}
+.title-R{
+    height:200rpx;
+    padding:0 40rpx;
+    background:#fff;
+    border-left:1rpx solid rgb(230, 230, 230);
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+}
+.title-R text{
+    width:24rpx;
+    font-size:24rpx;
+    font-weight:bold;
+    display:block;
+    color:#666666;
+    line-height:1.1;
+}
+.title-R image{
+    width:24rpx;
+    height:24rpx;
+    margin-top:10rpx;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,236 @@
+/* local.wxss */
+.mood{
+    padding:25rpx 37rpx 25rpx 40rpx;
+    display:flex;
+    align-items:center;
+    border-bottom:1rpx solid #dddddd;
+    overflow-y:hidden;
+}
+.graphic{
+    width:230rpx;
+    height:130rpx;
+    margin-left:6rpx;
+    margin-right:46rpx;
+}
+.words{
+    display:flex;
+    flex-direction: column;
+    font-size:32rpx;
+    width:80%;
+}
+.words .caption{
+    margin-bottom:10rpx;
+    width:100%;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:1; 
+}
+.first .words{
+    width:auto;
+}
+.mood .gray{
+    font-size:24rpx;
+    color:#999999;
+    display:block;
+}
+.icon{
+    width:50rpx;
+    height:50rpx;
+}
+.title{
+    font-size:32rpx;
+    margin-left:20rpx;
+}
+.switch{
+    display:flex;
+    align-items: center;
+}
+.switch image{
+    width:34rpx;
+    height:34rpx;
+    margin-right:20rpx;
+
+}
+.title-list{
+    display:flex;
+    align-items: center;
+}
+.just-spa{
+    justify-content: space-between;
+}
+.hot-list{
+    width:100rpx;
+    height:100rpx;
+    border-radius: 5rpx;
+    margin-right:30rpx;
+}
+.gray .blue{
+    color:#53a7f0;
+}
+.popularity{
+    width:170rpx;
+    height:170rpx;
+    border-radius: 8rpx;
+}
+.user{
+    display: flex;
+    text-align: center;
+}
+.user image{
+    width:40rpx;
+    height:32rpx;
+}
+.template{
+    padding-right:20rpx;
+}
+.template:last-child{
+    padding-right:40rpx;
+}
+.center .name{
+    white-space: nowrap;
+    width:170rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size:24rpx;
+}
+.left .name{
+    white-space: nowrap;
+    width:128rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size:24rpx;
+}
+.center .name{
+    white-space: nowrap;
+    width:170rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size:24rpx;
+}
+.user-publish{
+    padding:40rpx 40rpx 40rpx 120rpx; 
+    position:relative;
+    border-bottom:1rpx solid rgb(235,235,235);
+}
+.touxiang{
+    position:absolute;
+    left:40rpx;
+    top:46rpx;
+    width:60rpx;
+    height:60rpx;
+    border-radius: 30rpx;
+}
+.information .name{
+    font-size:32rpx;
+}
+.information{
+    display:flex;
+    flex-direction: column;
+    margin-bottom:40rpx;
+}
+.time{
+    font-size:24rpx;
+    color:#999999;
+}
+.speak{
+    font-size:32rpx;
+    display: block;
+}
+.speak-img{
+    margin-top:30rpx;
+    overflow: hidden;
+}
+.speak-img image{
+    width:160rpx;
+    height:160rpx;
+    border-radius: 8rpx;
+    display:block;
+    float:left;
+    margin-right:15rpx;
+    margin-bottom:15rpx;
+}
+.comment-icon{
+    display:flex;
+    align-items: center;
+    margin-top:30rpx;
+}
+.comment-icon image{
+    width:38rpx;
+    height:38rpx;
+}
+.comment-icon text{
+    margin-left:20rpx;
+    color:#999999;
+    font-size:24rpx;
+    width:94rpx;
+    border-right:1rpx solid #999999;
+    margin-right:44rpx;
+    line-height:12px;
+
+}
+.comment-icon text:last-child{
+    border:none;
+}
+.interaction{
+    background-color:#f8f8f8;
+    margin-top:30rpx;
+    
+}
+.user-img{
+    padding:26rpx;
+    overflow:hidden;
+    display: flex;
+    justify-content: space-between;
+}
+.img-box{
+    width:400rpx;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    height:50rpx;
+}
+.img-box image{
+    display: inline-block;
+    width:50rpx;
+    height:50rpx;
+    border-radius: 25rpx;
+    margin-right:20rpx;
+}
+.user-img text{
+    font-size:24rpx;
+    color:#999999;
+    float:right;
+    line-height:50rpx;
+}
+.comment{
+    border-top:1rpx solid rgb(235,235,235);
+    padding:26rpx;
+    overflow:hidden;
+}
+.comment text{
+    line-height:38rpx;
+}
+.comment view{
+    font-size:30rpx;
+    margin-bottom:10rpx;
+}
+.comment view:last-child{
+    margin:0;
+}
+.comment .comment-author{
+    color:#53a7f0;
+}
+.fixed .comment-input{
+    width:400rpx;
+}
+.fixed .codeButtonAble{
+    font-size: 28rpx;
+    width:140rpx;
+    height:60rpx;
+    line-height:60rpx;
+    background:#dddddd;
+    box-sizing:border-box;
+    margin-right:40rpx;
+}

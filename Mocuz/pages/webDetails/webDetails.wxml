@@ -1,0 +1,5 @@
+<!--pages/webDetails/webDetails.wxml-->
+<view class="page-section">
+    <web-view src="{{src}}"></web-view>
+</view>
+

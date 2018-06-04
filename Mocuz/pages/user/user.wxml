@@ -1,0 +1,24 @@
+<view class="container">
+    <view class="user"  bindtap='showUserInfo'>
+        <view class="user-info">
+            <image class="touxiang" src="{{userHeaderUrl}}" catchtap='showUserInfo'></image>
+            <view class="info" catchtap='showUserInfo'>
+                <text class="name">{{userName}}<text class="{{userGrade==1?'boy':(userGrade==2?'girl':'vip-static')}}">{{userLevel}}</text></text>
+                <text class="user-id">{{userPhone}}</text>
+            </view>
+        </view>
+        <image class="next" src="../../images/Icon-next.png" catchtap='showUserInfo'></image>
+    </view>
+    <view class="dynamic">
+        <view class="topic-num" catchtap='userPost' data-page="community" data-title="我的帖子">
+            <text class="number">{{space_threads==null?0:space_threads}}</text>
+            <text class="theme">我的帖子</text>
+        </view>
+        <text class="border"></text>
+        <view class="topic-num" catchtap='userPost' data-page="local" data-title="我的朋友圈">
+            <text class="number">{{topic_posts==null?0:topic_posts}}</text>
+            <text class="theme">我的朋友圈</text>
+        </view>
+    </view>
+    <button class='loginOutButton' bindtap='loginOut' hidden='{{!isLogin}}'>退出当前用户 </button>
+</view>

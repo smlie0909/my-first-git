@@ -1,0 +1,81 @@
+.container{
+    background:#f8f8f8;
+    justify-content: flex-start;
+    height: 100vh;
+}
+.user{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:40rpx;
+    border-bottom:1rpx solid #dddddd;
+    background:#fff;
+}
+.touxiang{
+    width:100rpx;
+    height:100rpx;
+    border-radius: 50rpx;
+}
+.user-info{
+    display:flex;
+    align-items: center;
+}
+.next{
+    width:50rpx;
+    height:50rpx;
+}
+.info{
+    display:flex;
+    flex-direction: column;
+    padding-left:32rpx;
+}
+.name{
+    font-size:30rpx;
+    line-height:30rpx;
+}
+.user-id{
+    font-size:24rpx;
+    color:#999999;
+    line-height:24rpx;
+    padding-top:20rpx;
+}
+.dynamic{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background:#fff;
+}
+.dynamic navigator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom:30rpx;
+}
+.border{
+    border-right:1rpx solid #eeeeee;
+    height: 72rpx;
+}
+.icon{
+    height:50rpx;
+    width:50rpx;
+    margin-right:14rpx;
+}
+.number{
+    font-size:34rpx;
+    line-height:34rpx;
+    padding-top:30rpx;
+    padding-bottom:20rpx;
+}
+.theme{
+    font-size:28rpx;
+    line-height:28rpx;
+}
+.loginOutButton{
+    width:90%;
+    background-color:#ff3c50;
+    color:#fff;
+    font-size:32rpx;
+    margin-top:70rpx;
+}

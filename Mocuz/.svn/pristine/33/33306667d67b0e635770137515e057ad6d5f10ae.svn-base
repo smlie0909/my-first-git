@@ -1,0 +1,88 @@
+//index.js
+const bannnerUrl = require('../../config').bannerList;
+const homeUrl = require('../../config').homeList;
+const app = getApp(); 
+Page({
+  data: { 
+        bannerData: {}, //banner轮播图
+        newsData:[],    //帖子列表
+        pageIndex: 1, //页码
+        totalpage: "", //总页数
+        pagesize: 20,      //返回数据的个数  
+        hasMore: true,  //"上拉加载"的变量，默认true，显示; “没有数据”的变量，false，隐藏
+    },
+    
+    onLoad: function () {
+        wx.showToast({
+            title: '数据加载中',
+            icon: 'loading',
+            duration: 1000,
+            mask: true
+        }); 
+        this.requestBannerDate();
+        this.requestNewslistDate();
+    },
+    //事件处理函数
+    jumpDetails: function (event) {
+        // console.log(event.currentTarget.id)
+        let itemId = event.currentTarget.id
+        wx.navigateTo({
+            url: '/pages/details/details?cid=' + itemId
+        })
+    },
+    //   加载更多
+    lower: function () {
+        this.setData({
+            pageIndex: this.data.pageIndex + 1, //每次下拉到底部触发 pageIndex+1
+        })
+        this.requestNewslistDate();
+    },
+    //  下拉刷新
+    upper:function(){
+        wx.showNavigationBarLoading(); //在标题栏中显示加载
+        //模拟加载
+        setTimeout(function () {
+            wx.hideNavigationBarLoading(); //完成停止加载
+            wx.stopPullDownRefresh(); //停止下拉刷新
+        }, 1500);
+    },
+    // Banner列表
+    requestBannerDate :function(){
+        let that = this;
+        wx.request({
+            url: bannnerUrl,
+            header: {
+                'content-type': 'application/json'
+            },
+            success: function (res) {
+                that.setData({
+                    bannerData: res.data.position_list[0].ad_list,
+                })
+            }
+        })
+    },
+    // 帖子列表
+    requestNewslistDate: function(){
+        let that = this;
+        // console.log(that.data.pageIndex)
+        if (that.data.pageIndex == that.data.totalpage) { //当pageIndex小于4时加载数据 
+            that.setData({
+                hasMore: false, //无数据时提示没有更多数据
+            });
+        }else {
+            wx.request({
+                url: homeUrl + "&page=" + that.data.pageIndex,
+                header: {
+                    'content-type': 'application/json'
+                },
+                success: function (res) {
+                    // console.log(res)
+                    that.setData({
+                        newsData: that.data.newsData.concat(res.data.content_lists),
+                        totalpage: res.data.total_page
+                    })
+                }
+            })
+        }
+    }
+})
